@@ -1,0 +1,1 @@
+./config -DGMSSL_NO_TURBO no-shared no-afalgeng --prefix=$PWD/build
