@@ -1,0 +1,79 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>ZUC_set_key</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:root@localhost" />
+</head>
+
+<body>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#RETURN-VALUES">RETURN VALUES</a></li>
+  <li><a href="#CONFORMING-TO">CONFORMING TO</a></li>
+  <li><a href="#SEE-ALSO">SEE ALSO</a></li>
+  <li><a href="#COPYRIGHT">COPYRIGHT</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>ZUC_set_key, ZUC_generate_keystream, ZUC_generate_keyword - ZUC Stream Cipher</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code> #include &lt;openssl/zuc.h&gt;
+
+ void ZUC_set_key(ZUC_KEY *key, const unsigned char *user_key, const unsigned char *iv);
+ void ZUC_generate_keystream(ZUC_KEY *key, size_t nwords, uint32_t *words);
+ uint32_t ZUC_generate_keyword(ZUC_KEY *key);</code></pre>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>ZUC_set_key() sets up the <b>ZUC_KEY</b> key using the <b>user_key</b> and initial vector <b>iv</b>.</p>
+
+<p>ZUC_set_key()通过用户的密钥<b>user_key</b>以及初始向量<b>iv</b>来设置密钥结构<b>ZUC_KEY</b>。</p>
+
+<p>ZUC_generate_keystream() computes 32-bit keywords for <b>nwords</b> times by a <b>ZUC_KEY</b> structure, and stores them in the given <b>words</b> array(pointer).</p>
+
+<p>ZUC_generate_keystream()通过函数参数中的<b>ZUC_KEY</b>结构计算<b>nwords</b>个32-bit的密钥字，并装入给定的<b>words</b>数组中。</p>
+
+<p>ZUC_generate_keyword() is simliar to ZUC_generate_keystream(), but computes keyword only once and return this value.</p>
+
+<p>ZUC_generate_keyword()与ZUC_generate_keystream()相似，但只计算一次并直接返回该密钥字的值。</p>
+
+<h1 id="RETURN-VALUES">RETURN VALUES</h1>
+
+<p>ZUC_set_key() and ZUC_generate_keystream() have no return value.</p>
+
+<p>ZUC_set_key()和ZUC_generate_keystream()无返回值。</p>
+
+<p>ZUC_generate_keyword() returns a 32-bit unsigned integer.</p>
+
+<p>ZUC_generate_keyword()返回一个32位无符号整数。</p>
+
+<h1 id="CONFORMING-TO">CONFORMING TO</h1>
+
+<p>GM/T 0004-2012 SM3 Cryptogrpahic Hash Algorithm.</p>
+
+<h1 id="SEE-ALSO">SEE ALSO</h1>
+
+<p><a href="../man3/EVP_DigestInit.html">EVP_DigestInit(3)</a></p>
+
+<h1 id="COPYRIGHT">COPYRIGHT</h1>
+
+<p>Copyright 2014-2019 The GmSSL Project. All Rights Reserved.</p>
+
+<p>Licensed under the GmSSL license (the &quot;License&quot;). You may not use this file except in compliance with the License. You can obtain a copy in the file LICENSE in the source distribution or at <a href="http://gmssl.org/license.html">http://gmssl.org/license.html</a>.</p>
+
+
+</body>
+
+</html>
+
+

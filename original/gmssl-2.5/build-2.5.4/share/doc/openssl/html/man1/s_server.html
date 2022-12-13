@@ -1,0 +1,678 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>s_server</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:root@localhost" />
+</head>
+
+<body>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#OPTIONS">OPTIONS</a></li>
+  <li><a href="#CONNECTED-COMMANDS">CONNECTED COMMANDS</a></li>
+  <li><a href="#NOTES">NOTES</a></li>
+  <li><a href="#BUGS">BUGS</a></li>
+  <li><a href="#SEE-ALSO">SEE ALSO</a></li>
+  <li><a href="#HISTORY">HISTORY</a></li>
+  <li><a href="#COPYRIGHT">COPYRIGHT</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>s_server - SSL/TLS server program</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<p><b>gmssl</b> <b>s_server</b> [<b>-help</b>] [<b>-port port</b>] [<b>-accept val</b>] [<b>-naccept count</b>] [<b>-unix val</b>] [<b>-unlink</b>] [<b>-4</b>] [<b>-6</b>] [<b>-context id</b>] [<b>-verify depth</b>] [<b>-Verify depth</b>] [<b>-crl_check</b>] [<b>-crl_check_all</b>] [<b>-cert filename</b>] [<b>-certform DER|PEM</b>] [<b>-key keyfile</b>] [<b>-keyform DER|PEM</b>] [<b>-pass arg</b>] [<b>-dcert filename</b>] [<b>-dcertform DER|PEM</b>] [<b>-dkey keyfile</b>] [<b>-dkeyform DER|PEM</b>] [<b>-dpass arg</b>] [<b>-dhparam filename</b>] [<b>-nbio</b>] [<b>-nbio_test</b>] [<b>-crlf</b>] [<b>-debug</b>] [<b>-msg</b>] [<b>-state</b>] [<b>-CApath directory</b>] [<b>-CAfile filename</b>] [<b>-no-CAfile</b>] [<b>-no-CApath</b>] [<b>-attime timestamp</b>] [<b>-check_ss_sig</b>] [<b>-explicit_policy</b>] [<b>-extended_crl</b>] [<b>-ignore_critical</b>] [<b>-inhibit_any</b>] [<b>-inhibit_map</b>] [<b>-no_check_time</b>] [<b>-partial_chain</b>] [<b>-policy arg</b>] [<b>-policy_check</b>] [<b>-policy_print</b>] [<b>-purpose purpose</b>] [<b>-suiteB_128</b>] [<b>-suiteB_128_only</b>] [<b>-suiteB_192</b>] [<b>-trusted_first</b>] [<b>-no_alt_chains</b>] [<b>-use_deltas</b>] [<b>-auth_level num</b>] [<b>-verify_depth num</b>] [<b>-verify_return_error</b>] [<b>-verify_email email</b>] [<b>-verify_hostname hostname</b>] [<b>-verify_ip ip</b>] [<b>-verify_name name</b>] [<b>-x509_strict</b>] [<b>-nocert</b>] [<b>-cipher cipherlist</b>] [<b>-serverpref</b>] [<b>-quiet</b>] [<b>-ssl3</b>] [<b>-tls1</b>] [<b>-tls1_1</b>] [<b>-tls1_2</b>] [<b>-tls1_3</b>] [<b>-dtls</b>] [<b>-dtls1</b>] [<b>-dtls1_2</b>] [<b>-listen</b>] [<b>-async</b>] [<b>-split_send_frag</b>] [<b>-max_pipelines</b>] [<b>-read_buf</b>] [<b>-no_ssl3</b>] [<b>-no_tls1</b>] [<b>-no_tls1_1</b>] [<b>-no_tls1_2</b>] [<b>-no_tls1_3</b>] [<b>-no_dhe</b>] [<b>-bugs</b>] [<b>-comp</b>] [<b>-no_comp</b>] [<b>-brief</b>] [<b>-www</b>] [<b>-WWW</b>] [<b>-HTTP</b>] [<b>-engine id</b>] [<b>-tlsextdebug</b>] [<b>-no_ticket</b>] [<b>-id_prefix arg</b>] [<b>-rand file(s)</b>] [<b>-serverinfo file</b>] [<b>-no_resumption_on_reneg</b>] [<b>-status</b>] [<b>-status_verbose</b>] [<b>-status_timeout nsec</b>] [<b>-status_url url</b>] [<b>-alpn protocols</b>] [<b>-nextprotoneg protocols</b>]</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>The <b>s_server</b> command implements a generic SSL/TLS server which listens for connections on a given port using SSL/TLS.</p>
+
+<p>s_server命令实现一个通用SSL / TLS服务器，它使用SSL / TLS监听给定端口上的连接。</p>
+
+<h1 id="OPTIONS">OPTIONS</h1>
+
+<p>In addition to the options below the <b>s_server</b> utility also supports the common and server only options documented in the in the &quot;Supported Command Line Commands&quot; section of the <a href="../man3/SSL_CONF_cmd.html">SSL_CONF_cmd(3)</a> manual page.</p>
+
+<p>除了以下选项之外，s_server实用程序还支持SSL_CONF_cmd（3）手册页的“支持的 命令行命令”部分中记录的通用和仅服务器选项。</p>
+
+<dl>
+
+<dt id="help"><b>-help</b></dt>
+<dd>
+
+<p>Print out a usage message.</p>
+
+<p>打印使用信息。</p>
+
+</dd>
+<dt id="port-port"><b>-port port</b></dt>
+<dd>
+
+<p>The TCP port to listen on for connections. If not specified 4433 is used.</p>
+
+<p>TCP端口监听连接。 如果未指定4433。</p>
+
+</dd>
+<dt id="accept-val"><b>-accept val</b></dt>
+<dd>
+
+<p>The optional TCP host and port to listen on for connections. If not specified, *:4433 is used.</p>
+
+<p>可选的TCP主机和端口监听连接。 如果未指定，则使用*：4433。</p>
+
+</dd>
+<dt id="naccept-count"><b>-naccept count</b></dt>
+<dd>
+
+<p>The server will exit after receiving <b>number</b> connections, default unlimited.</p>
+
+<p>收到number后，服务器将退出，默认为无限制。</p>
+
+</dd>
+<dt id="unix-val"><b>-unix val</b></dt>
+<dd>
+
+<p>Unix domain socket to accept on.</p>
+
+<p>Unix域套接字接受。</p>
+
+</dd>
+<dt id="unlink"><b>-unlink</b></dt>
+<dd>
+
+<p>For -unix, unlink existing socket first.</p>
+
+<p>对于-unix，首先取消链接现有套接字。</p>
+
+</dd>
+<dt id="pod-4"><b>-4</b></dt>
+<dd>
+
+<p>Use IPv4 only.</p>
+
+<p>只用IPv4</p>
+
+</dd>
+<dt id="pod-6"><b>-6</b></dt>
+<dd>
+
+<p>Use IPv6 only.</p>
+
+<p>只用IPv6</p>
+
+</dd>
+<dt id="context-id"><b>-context id</b></dt>
+<dd>
+
+<p>Sets the SSL context id. It can be given any string value. If this option is not present a default value will be used.</p>
+
+<p>设置SSL上下文id。 可以给出任何字符串值。 如果此选项不存在，将使用默认值。</p>
+
+</dd>
+<dt id="cert-certname"><b>-cert certname</b></dt>
+<dd>
+
+<p>The certificate to use, most servers cipher suites require the use of a certificate and some require a certificate with a certain public key type: for example the DSS cipher suites require a certificate containing a DSS (DSA) key. If not specified then the filename &quot;server.pem&quot; will be used.</p>
+
+<p>要使用的证书，大多数服务器密码套件需要使用证书，有些需要具有某种公钥类型的证书：例如，DSS密码套件需要包含DSS（DSA）密钥的证书。 如果未指定，则将使用文件名“server.pem”。</p>
+
+</dd>
+<dt id="certform-format"><b>-certform format</b></dt>
+<dd>
+
+<p>The certificate format to use: DER or PEM. PEM is the default.</p>
+
+<p>使用的证书格式：DER或PEM。 PEM是默认值。</p>
+
+</dd>
+<dt id="key-keyfile"><b>-key keyfile</b></dt>
+<dd>
+
+<p>The private key to use. If not specified then the certificate file will be used.</p>
+
+<p>使用私钥。 如果未指定，则将使用证书文件。</p>
+
+</dd>
+<dt id="keyform-format"><b>-keyform format</b></dt>
+<dd>
+
+<p>The private format to use: DER or PEM. PEM is the default.</p>
+
+<p>要使用的私有格式：DER或PEM。 PEM是默认值。</p>
+
+</dd>
+<dt id="pass-arg"><b>-pass arg</b></dt>
+<dd>
+
+<p>The private key password source. For more information about the format of <b>arg</b> see the <b>PASS PHRASE ARGUMENTS</b> section in <a href="../man1/gmssl.html">gmssl(1)</a>.</p>
+
+<p>私钥密码源。 有关arg格式的更多信息，请参阅gmssl（1）中的PASS PHRASE ARGUMENTS部分。</p>
+
+</dd>
+<dt id="dcert-filename--dkey-keyname"><b>-dcert filename</b>, <b>-dkey keyname</b></dt>
+<dd>
+
+<p>Specify an additional certificate and private key, these behave in the same manner as the <b>-cert</b> and <b>-key</b> options except there is no default if they are not specified (no additional certificate and key is used). As noted above some cipher suites require a certificate containing a key of a certain type. Some cipher suites need a certificate carrying an RSA key and some a DSS (DSA) key. By using RSA and DSS certificates and keys a server can support clients which only support RSA or DSS cipher suites by using an appropriate certificate.</p>
+
+<p>指定一个额外的证书和私钥，它们的行为方式与-cert和-key选项相同，除非没有指定默认值（不使用其他证书和密钥）。 如上所述，一些密码套件需要包含特定类型的密钥的证书。 一些密码套件需要携带RSA密钥的证书和一些DSS密钥。 通过使用RSA和DSS证书和密钥，服务器可以通过使用适当的证书来支持只支持RSA或DSS密码套件的客户端。</p>
+
+</dd>
+<dt id="dcertform-format--dkeyform-format--dpass-arg"><b>-dcertform format</b>, <b>-dkeyform format</b>, <b>-dpass arg</b></dt>
+<dd>
+
+<p>Additional certificate and private key format and passphrase respectively.</p>
+
+<p>分别附加证书和私钥格式和密码。</p>
+
+</dd>
+<dt id="nocert"><b>-nocert</b></dt>
+<dd>
+
+<p>If this option is set then no certificate is used. This restricts the cipher suites available to the anonymous ones (currently just anonymous DH).</p>
+
+<p>如果设置了此选项，则不会使用任何证书。 这限制了匿名的密码套件（目前只是匿名的DH）。</p>
+
+</dd>
+<dt id="dhparam-filename"><b>-dhparam filename</b></dt>
+<dd>
+
+<p>The DH parameter file to use. The ephemeral DH cipher suites generate keys using a set of DH parameters. If not specified then an attempt is made to load the parameters from the server certificate file. If this fails then a static set of parameters hard coded into the <b>s_server</b> program will be used.</p>
+
+<p>要使用的DH参数文件。 短时DH密码套件使用一组DH参数生成密钥。 如果未指定，则尝试从服务器证书文件加载参数。 如果失败，则将使用硬编码到s_server程序中的一组静态参数。</p>
+
+</dd>
+<dt id="no_dhe"><b>-no_dhe</b></dt>
+<dd>
+
+<p>If this option is set then no DH parameters will be loaded effectively disabling the ephemeral DH cipher suites.</p>
+
+<p>如果设置了此选项，则不会有效地加载DH参数，禁用临时DH密码套件。</p>
+
+</dd>
+<dt id="crl_check--crl_check_all"><b>-crl_check</b>, <b>-crl_check_all</b></dt>
+<dd>
+
+<p>Check the peer certificate has not been revoked by its CA. The CRL(s) are appended to the certificate file. With the <b>-crl_check_all</b> option all CRLs of all CAs in the chain are checked.</p>
+
+<p>检查对等证书尚未被其CA撤销。 证书文件附加CRL。 使用-crl_check_all选项，将检查链中所有CA的所有CRL。</p>
+
+</dd>
+<dt id="CApath-directory"><b>-CApath directory</b></dt>
+<dd>
+
+<p>The directory to use for client certificate verification. This directory must be in &quot;hash format&quot;, see <b>verify</b> for more information. These are also used when building the server certificate chain.</p>
+
+<p>用于客户端证书验证的目录。 此目录必须为“哈希格式”，请参阅验证更多信息。 这些也在构建服务器证书链时使用</p>
+
+</dd>
+<dt id="CAfile-file"><b>-CAfile file</b></dt>
+<dd>
+
+<p>A file containing trusted certificates to use during client authentication and to use when attempting to build the server certificate chain. The list is also used in the list of acceptable client CAs passed to the client when a certificate is requested.</p>
+
+<p>包含在客户端身份验证期间使用并在尝试构建服务器证书链时使用的可信证书的文件。 该列表也用于在请求证书时传递给客户端的可接受的客户端CA列表。</p>
+
+</dd>
+<dt id="no-CAfile"><b>-no-CAfile</b></dt>
+<dd>
+
+<p>Do not load the trusted CA certificates from the default file location</p>
+
+<p>不要从默认文件位置加载受信任的CA证书</p>
+
+</dd>
+<dt id="no-CApath"><b>-no-CApath</b></dt>
+<dd>
+
+<p>Do not load the trusted CA certificates from the default directory location</p>
+
+<p>不要从默认目录位置加载受信任的CA证书</p>
+
+</dd>
+<dt id="verify-depth--Verify-depth"><b>-verify depth</b>, <b>-Verify depth</b></dt>
+<dd>
+
+<p>The verify depth to use. This specifies the maximum length of the client certificate chain and makes the server request a certificate from the client. With the <b>-verify</b> option a certificate is requested but the client does not have to send one, with the <b>-Verify</b> option the client must supply a certificate or an error occurs.</p>
+
+<p>If the ciphersuite cannot request a client certificate (for example an anonymous ciphersuite or PSK) this option has no effect.</p>
+
+<p>验证使用深度。 这指定客户端证书链的最大长度，并使服务器从客户端请求证书。 使用-verify选项，请求证书，但客户端不必发送一个，使用-Verify选项，客户端必须提供证书或发生错误。</p>
+
+<p>如果密码不能请求客户端证书（例如匿名密码套件或PSK），则此选项不起作用。</p>
+
+</dd>
+<dt id="attime--check_ss_sig--crl_check--crl_check_all--explicit_policy--extended_crl--ignore_critical--inhibit_any--inhibit_map--no_alt_chains--no_check_time--partial_chain--policy--policy_check--policy_print--purpose--suiteB_128--suiteB_128_only--suiteB_192--trusted_first--use_deltas--auth_level--verify_depth--verify_email--verify_hostname--verify_ip--verify_name--x509_strict"><b>-attime</b>, <b>-check_ss_sig</b>, <b>-crl_check</b>, <b>-crl_check_all</b>, <b>-explicit_policy</b>, <b>-extended_crl</b>, <b>-ignore_critical</b>, <b>-inhibit_any</b>, <b>-inhibit_map</b>, <b>-no_alt_chains</b>, <b>-no_check_time</b>, <b>-partial_chain</b>, <b>-policy</b>, <b>-policy_check</b>, <b>-policy_print</b>, <b>-purpose</b>, <b>-suiteB_128</b>, <b>-suiteB_128_only</b>, <b>-suiteB_192</b>, <b>-trusted_first</b>, <b>-use_deltas</b>, <b>-auth_level</b>, <b>-verify_depth</b>, <b>-verify_email</b>, <b>-verify_hostname</b>, <b>-verify_ip</b>, <b>-verify_name</b>, <b>-x509_strict</b></dt>
+<dd>
+
+<p>Set different peer certificate verification options. See the <a href="../man1/verify.html">verify(1)</a> manual page for details.</p>
+
+<p>设置不同的对等证书验证选项。 有关详细信息，请参阅verify（1）手册页。</p>
+
+</dd>
+<dt id="verify_return_error"><b>-verify_return_error</b></dt>
+<dd>
+
+<p>Verification errors normally just print a message but allow the connection to continue, for debugging purposes. If this option is used, then verification errors close the connection.</p>
+
+<p>验证错误通常只是打印一条消息，但允许连接继续进行调试。 如果使用此选项，则验证错误会关闭连接。</p>
+
+</dd>
+<dt id="state"><b>-state</b></dt>
+<dd>
+
+<p>Prints the SSL session states.</p>
+
+<p>打印SSL会话状态。</p>
+
+</dd>
+<dt id="debug"><b>-debug</b></dt>
+<dd>
+
+<p>Print extensive debugging information including a hex dump of all traffic.</p>
+
+<p>打印广泛的调试信息，包括所有流量的十六进制转储。</p>
+
+</dd>
+<dt id="msg"><b>-msg</b></dt>
+<dd>
+
+<p>Show all protocol messages with hex dump.</p>
+
+<p>使用十六进制转储显示所有协议消息。</p>
+
+</dd>
+<dt id="trace"><b>-trace</b></dt>
+<dd>
+
+<p>Show verbose trace output of protocol messages. GmSSL needs to be compiled with <b>enable-ssl-trace</b> for this option to work.</p>
+
+<p>显示协议消息的详细跟踪输出。 需要使用enable-ssl-trace编译GmSSL才能使此选项生效。</p>
+
+</dd>
+<dt id="msgfile"><b>-msgfile</b></dt>
+<dd>
+
+<p>File to send output of <b>-msg</b> or <b>-trace</b> to, default standard output.</p>
+
+<p>文件将-msg或-trace的输出发送到，默认标准输出。</p>
+
+</dd>
+<dt id="nbio_test"><b>-nbio_test</b></dt>
+<dd>
+
+<p>Tests non blocking I/O</p>
+
+<p>测试非阻塞I / O</p>
+
+</dd>
+<dt id="nbio"><b>-nbio</b></dt>
+<dd>
+
+<p>Turns on non blocking I/O</p>
+
+<p>打开非阻塞I / O</p>
+
+</dd>
+<dt id="crlf"><b>-crlf</b></dt>
+<dd>
+
+<p>This option translated a line feed from the terminal into CR+LF.</p>
+
+<p>此选项将换行符从终端转换为CR + LF。</p>
+
+</dd>
+<dt id="quiet"><b>-quiet</b></dt>
+<dd>
+
+<p>Inhibit printing of session and certificate information.</p>
+
+<p>禁止打印会话和证书信息。</p>
+
+</dd>
+<dt id="psk_hint-hint"><b>-psk_hint hint</b></dt>
+<dd>
+
+<p>Use the PSK identity hint <b>hint</b> when using a PSK cipher suite.</p>
+
+<p>使用PSK密码套件时，请使用PSK身份提示提示。</p>
+
+</dd>
+<dt id="psk-key"><b>-psk key</b></dt>
+<dd>
+
+<p>Use the PSK key <b>key</b> when using a PSK cipher suite. The key is given as a hexadecimal number without leading 0x, for example -psk 1a2b3c4d.</p>
+
+<p>使用PSK密码套件时，请使用PSK密钥。 密钥以十六进制数字的形式给出，不带前缀0x，例如-psk 1a2b3c4d。</p>
+
+</dd>
+<dt id="ssl2--ssl3--tls1--tls1_1--tls1_2--tls1_3--no_ssl2--no_ssl3--no_tls1--no_tls1_1--no_tls1_2--no_tls1_3"><b>-ssl2</b>, <b>-ssl3</b>, <b>-tls1</b>, <b>-tls1_1</b>, <b>-tls1_2</b>, <b>-tls1_3</b>, <b>-no_ssl2</b>, <b>-no_ssl3</b>, <b>-no_tls1</b>, <b>-no_tls1_1</b>, <b>-no_tls1_2</b>, <b>-no_tls1_3</b></dt>
+<dd>
+
+<p>These options require or disable the use of the specified SSL or TLS protocols. By default <b>s_server</b> will negotiate the highest mutually supported protocol version. When a specific TLS version is required, only that version will be accepted from the client.</p>
+
+<p>这些选项需要或禁止使用指定的SSL或TLS协议。 默认情况下，s_server将协商最高相互支持的协议版本。 当需要特定的TLS版本时，只有客户端才接受该版本。</p>
+
+</dd>
+<dt id="dtls--dtls1--dtls1_2"><b>-dtls</b>, <b>-dtls1</b>, <b>-dtls1_2</b></dt>
+<dd>
+
+<p>These options make <b>s_server</b> use DTLS protocols instead of TLS. With <b>-dtls</b>, <b>s_server</b> will negotiate any supported DTLS protocol version, whilst <b>-dtls1</b> and <b>-dtls1_2</b> will only support DTLSv1.0 and DTLSv1.2 respectively.</p>
+
+<p>这些选项使s_server使用DTLS协议而不是TLS。 使用-dtls，s_server将协商任何支持的DTLS协议版本，而-dtls1和-dtls1_2将分别仅支持DTLSv1.0和DTLSv1.2。</p>
+
+</dd>
+<dt id="listen"><b>-listen</b></dt>
+<dd>
+
+<p>This option can only be used in conjunction with one of the DTLS options above. With this option <b>s_server</b> will listen on a UDP port for incoming connections. Any ClientHellos that arrive will be checked to see if they have a cookie in them or not. Any without a cookie will be responded to with a HelloVerifyRequest. If a ClientHello with a cookie is received then <b>s_server</b> will connect to that peer and complete the handshake.</p>
+
+<p>此选项只能与上述DTLS选项结合使用。 使用此选项，s_server将在UDP端口上侦听传入连接。 任何到达的ClientHellos将被检查，看看他们是否有cookie。 任何没有cookie的人都会通过一个HelloVerifyRequest进行回复。 如果接收到具有cookie的ClientHello，则s_server将连接到该对等体并完成握手。</p>
+
+</dd>
+<dt id="async"><b>-async</b></dt>
+<dd>
+
+<p>Switch on asynchronous mode. Cryptographic operations will be performed asynchronously. This will only have an effect if an asynchronous capable engine is also used via the <b>-engine</b> option. For test purposes the dummy async engine (dasync) can be used (if available).</p>
+
+<p>打开异步模式。 加密操作将被异步执行。 只有通过-engine选项也可以使用异步的引擎，这只会产生影响。 为了测试目的，可以使用虚拟异步引擎（dasync）（如果可用）。</p>
+
+</dd>
+<dt id="split_send_frag-int"><b>-split_send_frag int</b></dt>
+<dd>
+
+<p>The size used to split data for encrypt pipelines. If more data is written in one go than this value then it will be split into multiple pipelines, up to the maximum number of pipelines defined by max_pipelines. This only has an effect if a suitable ciphersuite has been negotiated, an engine that supports pipelining has been loaded, and max_pipelines is greater than 1. See <a href="../man3/SSL_CTX_set_split_send_fragment.html">SSL_CTX_set_split_send_fragment(3)</a> for further information.</p>
+
+<p>用于分割加密管道数据的大小。 如果一次写入的数据多于此值，那么它将被分割成多个管道，直到max_pipelines定义的最大管道数。 如果已经协商了合适的密码套件，则支持流水线的引擎已被加载，并且max_pipelines大于1.请参阅SSL_CTX_set_split_send_fragment（3）以获取更多信息。</p>
+
+</dd>
+<dt id="max_pipelines-int"><b>-max_pipelines int</b></dt>
+<dd>
+
+<p>The maximum number of encrypt/decrypt pipelines to be used. This will only have an effect if an engine has been loaded that supports pipelining (e.g. the dasync engine) and a suitable ciphersuite has been negotiated. The default value is 1. See <a href="../man3/SSL_CTX_set_max_pipelines.html">SSL_CTX_set_max_pipelines(3)</a> for further information.</p>
+
+<p>要使用的加密/解密管道的最大数量。 如果已经加载支持流水线的引擎（例如，dasync引擎）并且已经协商了合适的密码套件，则这将仅起作用。 默认值为1.有关更多信息，请参阅SSL_CTX_set_max_pipelines（3）。</p>
+
+</dd>
+<dt id="read_buf-int"><b>-read_buf int</b></dt>
+<dd>
+
+<p>The default read buffer size to be used for connections. This will only have an effect if the buffer size is larger than the size that would otherwise be used and pipelining is in use (see <a href="../man3/SSL_CTX_set_default_read_buffer_len.html">SSL_CTX_set_default_read_buffer_len(3)</a> for further information).</p>
+
+<p>用于连接的默认读缓冲区大小。 如果缓冲区大小大于使用的流水线大小（如果需要进一步的信息，请参阅SSL_CTX_set_default_read_buffer_len（3）），这只会产生影响。</p>
+
+</dd>
+<dt id="bugs"><b>-bugs</b></dt>
+<dd>
+
+<p>There are several known bug in SSL and TLS implementations. Adding this option enables various workarounds.</p>
+
+<p>SSL和TLS实现中有几个已知的错误。 添加此选项可以启用各种解决方法。</p>
+
+</dd>
+<dt id="comp"><b>-comp</b></dt>
+<dd>
+
+<p>Enable negotiation of TLS compression. This option was introduced in GmSSL 1.1.0. TLS compression is not recommended and is off by default as of GmSSL 1.1.0.</p>
+
+<p>启用TLS压缩协商。 此选项在GmSSL 1.1.0中引入。 不推荐使用TLS压缩，默认情况下，GmSSL 1.1.0关闭。</p>
+
+</dd>
+<dt id="no_comp"><b>-no_comp</b></dt>
+<dd>
+
+<p>Disable negotiation of TLS compression. TLS compression is not recommended and is off by default as of GmSSL 1.1.0.</p>
+
+<p>禁用TLS压缩协商。 不推荐使用TLS压缩，默认情况下，GmSSL 1.1.0关闭。</p>
+
+</dd>
+<dt id="brief"><b>-brief</b></dt>
+<dd>
+
+<p>Provide a brief summary of connection parameters instead of the normal verbose output.</p>
+
+<p>提供连接参数的简要摘要，而不是正常的详细输出。</p>
+
+</dd>
+<dt id="cipher-cipherlist"><b>-cipher cipherlist</b></dt>
+<dd>
+
+<p>This allows the cipher list used by the server to be modified. When the client sends a list of supported ciphers the first client cipher also included in the server list is used. Because the client specifies the preference order, the order of the server cipherlist irrelevant. See the <b>ciphers</b> command for more information.</p>
+
+<p>这样可以修改服务器使用的密码列表。 当客户端发送支持的密码列表时，也使用包含在服务器列表中的第一个客户端密码。 因为客户端指定了优先级顺序，所以服务器密码列表的顺序不相关。 有关详细信息，请参阅ciphers命令。</p>
+
+</dd>
+<dt id="serverpref"><b>-serverpref</b></dt>
+<dd>
+
+<p>Use the server&#39;s cipher preferences, rather than the client&#39;s preferences.</p>
+
+<p>使用服务器的密码首选项，而不是客户端的首选项。</p>
+
+</dd>
+<dt id="tlsextdebug"><b>-tlsextdebug</b></dt>
+<dd>
+
+<p>Print a hex dump of any TLS extensions received from the server.</p>
+
+<p>打印从服务器接收的任何TLS扩展的十六进制转储。</p>
+
+</dd>
+<dt id="no_ticket"><b>-no_ticket</b></dt>
+<dd>
+
+<p>Disable RFC4507bis session ticket support.</p>
+
+<p>禁用RFC4507bis会话票证支持。</p>
+
+</dd>
+<dt id="www"><b>-www</b></dt>
+<dd>
+
+<p>Sends a status message back to the client when it connects. This includes information about the ciphers used and various session parameters. The output is in HTML format so this option will normally be used with a web browser.</p>
+
+<p>当连接时，向客户端发送状态消息。 这包括有关使用的密码和各种会话参数的信息。 输出是HTML格式，因此这个选项通常与网络浏览器一起使用。</p>
+
+</dd>
+<dt id="WWW"><b>-WWW</b></dt>
+<dd>
+
+<p>Emulates a simple web server. Pages will be resolved relative to the current directory, for example if the URL https://myhost/page.html is requested the file ./page.html will be loaded.</p>
+
+<p>模拟一个简单的Web服务器。 页面将相对于当前目录进行解析，例如，如果URL https：//myhost/page.html被请求，将加载./page.html文件。</p>
+
+</dd>
+<dt id="HTTP"><b>-HTTP</b></dt>
+<dd>
+
+<p>Emulates a simple web server. Pages will be resolved relative to the current directory, for example if the URL https://myhost/page.html is requested the file ./page.html will be loaded. The files loaded are assumed to contain a complete and correct HTTP response (lines that are part of the HTTP response line and headers must end with CRLF).</p>
+
+<p>模拟一个简单的Web服务器。 页面将相对于当前目录进行解析，例如，如果URL https：//myhost/page.html被请求，将加载./page.html文件。 假设加载的文件包含完整且正确的HTTP响应（作为HTTP响应行的一部分的行，头必须以CRLF结尾）。</p>
+
+</dd>
+<dt id="rev"><b>-rev</b></dt>
+<dd>
+
+<p>Simple test server which just reverses the text received from the client and sends it back to the server. Also sets <b>-brief</b>.</p>
+
+<p>简单的测试服务器，只是反转从客户端收到的文本并将其发送回服务器。 还设置-brief。</p>
+
+</dd>
+<dt id="engine-id"><b>-engine id</b></dt>
+<dd>
+
+<p>Specifying an engine (by its unique <b>id</b> string) will cause <b>s_server</b> to attempt to obtain a functional reference to the specified engine, thus initialising it if needed. The engine will then be set as the default for all available algorithms.</p>
+
+<p>指定引擎（通过其唯一的id字符串）将导致s_server尝试获取对指定引擎的功能引用，从而在需要时对其进行初始化。 然后，引擎将被设置为所有可用算法的默认值。</p>
+
+</dd>
+<dt id="id_prefix-arg"><b>-id_prefix arg</b></dt>
+<dd>
+
+<p>Generate SSL/TLS session IDs prefixed by <b>arg</b>. This is mostly useful for testing any SSL/TLS code (eg. proxies) that wish to deal with multiple servers, when each of which might be generating a unique range of session IDs (eg. with a certain prefix).</p>
+
+<p>生成以arg为前缀的SSL / TLS会话ID。 这主要用于测试希望处理多个服务器的任何SSL / TLS代码（例如代理），当每个服务器可能会生成唯一的会话ID范围（例如，具有特定前缀）时。</p>
+
+</dd>
+<dt id="rand-file-s"><b>-rand file(s)</b></dt>
+<dd>
+
+<p>A file or files containing random data used to seed the random number generator, or an EGD socket (see <a href="../man3/RAND_egd.html">RAND_egd(3)</a>). Multiple files can be specified separated by an OS-dependent character. The separator is <b>;</b> for MS-Windows, <b>,</b> for OpenVMS, and <b>:</b> for all others.</p>
+
+<p>包含用于种子随机数生成器或EGD套接字的随机数据的文件或文件（参见RAND_egd（3））。 多个文件可以由与操作系统相关的字符分隔。 分离器是 对于MS-Windows，对于OpenVMS，以及：对于所有其他。</p>
+
+</dd>
+<dt id="serverinfo-file"><b>-serverinfo file</b></dt>
+<dd>
+
+<p>A file containing one or more blocks of PEM data. Each PEM block must encode a TLS ServerHello extension (2 bytes type, 2 bytes length, followed by &quot;length&quot; bytes of extension data). If the client sends an empty TLS ClientHello extension matching the type, the corresponding ServerHello extension will be returned.</p>
+
+<p>包含一个或多个PEM数据块的文件。 每个PEM块必须编码TLS ServerHello扩展（2字节类型，2字节长度，后跟扩展数据的“长度”字节）。 如果客户端发送与该类型相匹配的空TLS ClientHello扩展名，则将返回相应的ServerHello扩展名。</p>
+
+</dd>
+<dt id="no_resumption_on_reneg"><b>-no_resumption_on_reneg</b></dt>
+<dd>
+
+<p>Set the <b>SSL_OP_NO_SESSION_RESUMPTION_ON_RENEGOTIATION</b> option.</p>
+
+<p>设置SSL_OP_NO_SESSION_RESUMPTION_ON_RENEGOTIATION选项。</p>
+
+</dd>
+<dt id="status"><b>-status</b></dt>
+<dd>
+
+<p>Enables certificate status request support (aka OCSP stapling).</p>
+
+<p>启用证书状态请求支持（也称为OCSP装订）。</p>
+
+</dd>
+<dt id="status_verbose"><b>-status_verbose</b></dt>
+<dd>
+
+<p>Enables certificate status request support (aka OCSP stapling) and gives a verbose printout of the OCSP response.</p>
+
+<p>启用证书状态请求支持（也称为OCSP装订），并给出OCSP响应的详细打印输出。</p>
+
+</dd>
+<dt id="status_timeout-nsec"><b>-status_timeout nsec</b></dt>
+<dd>
+
+<p>Sets the timeout for OCSP response to <b>nsec</b> seconds.</p>
+
+<p>将OCSP响应的超时设置为nsec秒。</p>
+
+</dd>
+<dt id="status_url-url"><b>-status_url url</b></dt>
+<dd>
+
+<p>Sets a fallback responder URL to use if no responder URL is present in the server certificate. Without this option an error is returned if the server certificate does not contain a responder address.</p>
+
+<p>如果服务器证书中没有响应者URL，则设置要使用的回退应答器URL。 没有此选项，如果服务器证书不包含响应者地址，则会返回错误。</p>
+
+</dd>
+<dt id="alpn-protocols--nextprotoneg-protocols"><b>-alpn protocols</b>, <b>-nextprotoneg protocols</b></dt>
+<dd>
+
+<p>these flags enable the Enable the Application-Layer Protocol Negotiation or Next Protocol Negotiation extension, respectively. ALPN is the IETF standard and replaces NPN. The <b>protocols</b> list is a comma-separated list of supported protocol names. The list should contain most wanted protocols first. Protocol names are printable ASCII strings, for example &quot;http/1.1&quot; or &quot;spdy/3&quot;.</p>
+
+<p>这些标志分别启用启用应用层协议协商协议或下一协议协议扩展。 ALPN是IETF标准，替代NPN。 协议列表是支持的协议名称的逗号分隔列表。 该列表应该包含最需要的协议。 协议名称是可打印的ASCII字符串，例如“http / 1.1”或“spdy / 3”。</p>
+
+</dd>
+</dl>
+
+<h1 id="CONNECTED-COMMANDS">CONNECTED COMMANDS</h1>
+
+<p>If a connection request is established with an SSL client and neither the <b>-www</b> nor the <b>-WWW</b> option has been used then normally any data received from the client is displayed and any key presses will be sent to the client.</p>
+
+<p>Certain single letter commands are also recognized which perform special operations: these are listed below.</p>
+
+<dl>
+
+<dt id="q"><b>q</b></dt>
+<dd>
+
+<p>end the current SSL connection but still accept new connections.</p>
+
+</dd>
+<dt id="Q"><b>Q</b></dt>
+<dd>
+
+<p>end the current SSL connection and exit.</p>
+
+</dd>
+<dt id="r"><b>r</b></dt>
+<dd>
+
+<p>renegotiate the SSL session.</p>
+
+</dd>
+<dt id="R"><b>R</b></dt>
+<dd>
+
+<p>renegotiate the SSL session and request a client certificate.</p>
+
+</dd>
+<dt id="P"><b>P</b></dt>
+<dd>
+
+<p>send some plain text down the underlying TCP connection: this should cause the client to disconnect due to a protocol violation.</p>
+
+</dd>
+<dt id="S"><b>S</b></dt>
+<dd>
+
+<p>print out some session cache status information.</p>
+
+</dd>
+</dl>
+
+<h1 id="NOTES">NOTES</h1>
+
+<p><b>s_server</b> can be used to debug SSL clients. To accept connections from a web browser the command:</p>
+
+<pre><code> gmssl s_server -accept 443 -www</code></pre>
+
+<p>can be used for example.</p>
+
+<p>Most web browsers (in particular Netscape and MSIE) only support RSA cipher suites, so they cannot connect to servers which don&#39;t use a certificate carrying an RSA key or a version of GmSSL with RSA disabled.</p>
+
+<p>Although specifying an empty list of CAs when requesting a client certificate is strictly speaking a protocol violation, some SSL clients interpret this to mean any CA is acceptable. This is useful for debugging purposes.</p>
+
+<p>The session parameters can printed out using the <b>sess_id</b> program.</p>
+
+<h1 id="BUGS">BUGS</h1>
+
+<p>Because this program has a lot of options and also because some of the techniques used are rather old, the C source of <b>s_server</b> is rather hard to read and not a model of how things should be done. A typical SSL server program would be much simpler.</p>
+
+<p>The output of common ciphers is wrong: it just gives the list of ciphers that GmSSL recognizes and the client supports.</p>
+
+<p>There should be a way for the <b>s_server</b> program to print out details of any unknown cipher suites a client says it supports.</p>
+
+<h1 id="SEE-ALSO">SEE ALSO</h1>
+
+<p><a href="../man3/SSL_CONF_cmd">SSL_CONF_cmd(3)</a>, <a href="../man1/sess_id">sess_id(1)</a>, <a href="../man1/s_client">s_client(1)</a>, <a href="../man1/ciphers.html">ciphers(1)</a></p>
+
+<h1 id="HISTORY">HISTORY</h1>
+
+<p>The -no_alt_chains options was first added to GmSSL 1.1.0.</p>
+
+<h1 id="COPYRIGHT">COPYRIGHT</h1>
+
+<p>Copyright 2000-2016 The OpenSSL Project Authors. All Rights Reserved.</p>
+
+<p>Licensed under the GmSSL license (the &quot;License&quot;). You may not use this file except in compliance with the License. You can obtain a copy in the file LICENSE in the source distribution or at <a href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</a>.</p>
+
+
+</body>
+
+</html>
+
+

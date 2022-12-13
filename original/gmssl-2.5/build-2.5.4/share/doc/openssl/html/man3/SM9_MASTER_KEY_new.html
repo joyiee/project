@@ -1,0 +1,89 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>SM9_MASTER_KEY_new</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:root@localhost" />
+</head>
+
+<body>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#RETURN-VALUES">RETURN VALUES</a></li>
+  <li><a href="#CONFORMING-TO">CONFORMING TO</a></li>
+  <li><a href="#SEE-ALSO">SEE ALSO</a></li>
+  <li><a href="#COPYRIGHT">COPYRIGHT</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>SM9_MASTER_KEY_new, SM9_MASTER_KEY_free, SM9_KEY_new, SM9_KEY_free - SM9 Algorithm</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code> #include &lt;openssl/sm9.h&gt;
+
+ SM9_MASTER_KEY *SM9_MASTER_KEY_new(void);
+ void SM9_MASTER_KEY_free(SM9_MASTER_KEY *a);
+
+ SM9_KEY *SM9_KEY_new(void);
+ void SM9_KEY_free(SM9_KEY *a);</code></pre>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>SM9_MASTER_KEY_new() allocates an empty <b>SM9_MASTER_KEY</b> structure.</p>
+
+<p>SM9_MASTER_KEY_new()分配一个新的<b>SM9_MASTER_KEY</b>结构。</p>
+
+<p>SM9_MASTER_KEY_free() frees the given <b>SM9_MASTER_KEY</b> structure.</p>
+
+<p>SM9_MASTER_KEY_free()将给定的<b>SM9_MASTER_KEY</b>结构释放。</p>
+
+<p>SM9_KEY_new() allocates an empty <b>SM9_KEY</b> structure.</p>
+
+<p>SM9_KEY_new()分配一个新的<b>SM9_KEY</b>结构。</p>
+
+<p>SM9_KEY_free() frees the given <b>SM9_KEY</b> structure.</p>
+
+<p>SM9_KEY_free()将给定的<b>SM9_KEY</b>结构释放。</p>
+
+<h1 id="RETURN-VALUES">RETURN VALUES</h1>
+
+<p>SM9_MASTER_KEY_new() returns a pointer to an allocated <b>SM9_MASTER_KEY</b> structure or NULL on error.</p>
+
+<p>SM9_MASTER_KEY_new()返回一个指向已分配的<b>SM9_MASTER_KEY</b>结构的指针。如果发生错误则返回NULL。</p>
+
+<p>SM9_KEY_new() returns a pointer to an allocated <b>SM9_KEY</b> structure or NULL on error.</p>
+
+<p>SM9_KEY_new()返回一个指向已分配的<b>SM9_KEY</b>结构的指针。如果发生错误则返回NULL。</p>
+
+<p>SM9_MASTER_KEY_free() and SM9_KEY_free() have no return value.</p>
+
+<p>SM9_MASTER_KEY_free()和SM9_KEY_free()无返回值。</p>
+
+<h1 id="CONFORMING-TO">CONFORMING TO</h1>
+
+<p>GM/T 0044-2016 SM9 Identification Cryptographic Algorithm</p>
+
+<h1 id="SEE-ALSO">SEE ALSO</h1>
+
+<p><a href="../man3/EVP_DigestInit.html">EVP_DigestInit(3)</a></p>
+
+<h1 id="COPYRIGHT">COPYRIGHT</h1>
+
+<p>Copyright 2014-2019 The GmSSL Project. All Rights Reserved.</p>
+
+<p>Licensed under the GmSSL license (the &quot;License&quot;). You may not use this file except in compliance with the License. You can obtain a copy in the file LICENSE in the source distribution or at <a href="http://gmssl.org/license.html">http://gmssl.org/license.html</a>.</p>
+
+
+</body>
+
+</html>
+
+

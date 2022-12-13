@@ -1,0 +1,99 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>SM9_setup</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:root@localhost" />
+</head>
+
+<body>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#RETURN-VALUES">RETURN VALUES</a></li>
+  <li><a href="#CONFORMING-TO">CONFORMING TO</a></li>
+  <li><a href="#SEE-ALSO">SEE ALSO</a></li>
+  <li><a href="#COPYRIGHT">COPYRIGHT</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>SM9_setup, SM9_generate_master_secret, SM9_extract_public_parameters, SM9_extract_private_key, SM9_extract_public_key - SM9 Algorithm</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code> #include &lt;openssl/sm9.h&gt;
+
+ int SM9_setup(int pairing, int scheme, int hash1,
+        SM9PublicParameters **mpk, SM9MasterSecret **msk);
+
+ SM9MasterSecret *SM9_generate_master_secret(int pairing, int scheme, int hash1);
+ SM9PublicParameters *SM9_extract_public_parameters(SM9MasterSecret *msk);
+
+ SM9PrivateKey *SM9_extract_private_key(SM9MasterSecret *msk,
+        const char *id, size_t idlen);
+
+ SM9PublicKey *SM9_extract_public_key(SM9PublicParameters *mpk,
+        const char *id, size_t idlen);</code></pre>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>SM9_setup() calls SM9_generate_master_secret() and SM9_extract_public_parameters() to set up public parameters and master key for a later usage of SM9 system.</p>
+
+<p>SM9_setup()通过调用SM9_generate_master_secret()和SM9_extract_public_parameters()来设置SM9系统的公共参数和主密钥，以备之后使用。</p>
+
+<p>SM9_generate_master_secret() generates a new <b>SM9MasterSecret</b> structure and set its parameters including pairing type, helper functions, master secret value and master public point.</p>
+
+<p>SM9_generate_master_secret()产生一个新的<b>SM9MasterSecret</b>结构，并为它设置双线性对类型、主密钥等参数值。</p>
+
+<p>SM9_extract_public_parameters() allocates an empty <b>SM9PublicParameters</b> structure and copies some parameters from the given <b>SM9MasterSecret</b> structure.</p>
+
+<p>SM9_extract_public_parameters()分配一个空的<b>SM9PublicParameters</b>结构，并从给定的<b>SM9MasterSecret</b>结构中拷贝部分变量值。</p>
+
+<p>SM9_extract_private_key() and SM9_extract_public_key() both call SM9_MASTER_KEY_extract_key() (but using a different identifier) to generate public or private key for SM9.</p>
+
+<p>SM9_extract_private_key()和SM9_extract_public_key()都调用SM9_MASTER_KEY_extract_key()生成一个<b>SM9_KEY</b>结构，但通过一个标识位区别生成的是公钥还是私钥。</p>
+
+<h1 id="RETURN-VALUES">RETURN VALUES</h1>
+
+<p>SM9_setup() returns 1 on success or 0 on failure.</p>
+
+<p>SM9_setup()如果执行成功则返回1，失败返回0。</p>
+
+<p>SM9_generate_master_secret() returns a pointer to an allocated <b>SM9MasterSecret</b> structure or NULL on error.</p>
+
+<p>SM9_generate_master_secret()返回一个指向已分配的<b>SM9MasterSecret</b>结构的指针。如果发生错误则返回NULL。</p>
+
+<p>SM9_extract_public_parameters() returns a pointer to an allocated <b>SM9PublicParameters</b> structure or NULL on error.</p>
+
+<p>SM9_extract_public_parameters()返回一个指向已分配的<b>SM9PublicParameters</b>结构的指针。如果发生错误则返回NULL。</p>
+
+<p>SM9_extract_private_key() and SM9_extract_public_key() return a pointer to an allocated <b>SM9_KEY</b> structure or NULL on error.</p>
+
+<p>SM9_extract_private_key()和SM9_extract_public_key()返回一个指向已分配的<b>SM9_KEY</b>结构的指针。如果发生错误则返回NULL。</p>
+
+<h1 id="CONFORMING-TO">CONFORMING TO</h1>
+
+<p>GM/T 0044-2016 SM9 Identification Cryptographic Algorithm</p>
+
+<h1 id="SEE-ALSO">SEE ALSO</h1>
+
+<p><a href="../man3/EVP_DigestInit.html">EVP_DigestInit(3)</a></p>
+
+<h1 id="COPYRIGHT">COPYRIGHT</h1>
+
+<p>Copyright 2014-2019 The GmSSL Project. All Rights Reserved.</p>
+
+<p>Licensed under the GmSSL license (the &quot;License&quot;). You may not use this file except in compliance with the License. You can obtain a copy in the file LICENSE in the source distribution or at <a href="http://gmssl.org/license.html">http://gmssl.org/license.html</a>.</p>
+
+
+</body>
+
+</html>
+
+

@@ -1,0 +1,231 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>ecparam</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:root@localhost" />
+</head>
+
+<body>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#OPTIONS">OPTIONS</a></li>
+  <li><a href="#NOTES">NOTES</a></li>
+  <li><a href="#EXAMPLES">EXAMPLES</a></li>
+  <li><a href="#SEE-ALSO">SEE ALSO</a></li>
+  <li><a href="#COPYRIGHT">COPYRIGHT</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>ecparam - EC parameter manipulation and generation</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<p><b>gmssl ecparam</b> [<b>-help</b>] [<b>-inform DER|PEM</b>] [<b>-outform DER|PEM</b>] [<b>-in filename</b>] [<b>-out filename</b>] [<b>-noout</b>] [<b>-text</b>] [<b>-C</b>] [<b>-check</b>] [<b>-name arg</b>] [<b>-list_curves</b>] [<b>-conv_form arg</b>] [<b>-param_enc arg</b>] [<b>-no_seed</b>] [<b>-rand file(s)</b>] [<b>-genkey</b>] [<b>-engine id</b>]</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>This command is used to manipulate or generate EC parameter files.</p>
+
+<p>此命令用于操作或生成EC参数文件。</p>
+
+<h1 id="OPTIONS">OPTIONS</h1>
+
+<dl>
+
+<dt id="help"><b>-help</b></dt>
+<dd>
+
+<p>Print out a usage message.</p>
+
+<p>输出使用信息。</p>
+
+</dd>
+<dt id="inform-DER-PEM"><b>-inform DER|PEM</b></dt>
+<dd>
+
+<p>This specifies the input format. The <b>DER</b> option uses an ASN.1 DER encoded form compatible with RFC 3279 EcpkParameters. The PEM form is the default format: it consists of the <b>DER</b> format base64 encoded with additional header and footer lines.</p>
+
+<p>输入文件格式，DER或PEM格式。DER采用与RFC 3279EcpkParameters兼容的ASN1的DER标准格式。PEM格式是默认格式：它由DER格式base64编码，带有附加的页眉和页脚行。</p>
+
+</dd>
+<dt id="outform-DER-PEM"><b>-outform DER|PEM</b></dt>
+<dd>
+
+<p>This specifies the output format, the options have the same meaning as the <b>-inform</b> option.</p>
+
+<p>指出输出格式。和-inform用法相同。</p>
+
+</dd>
+<dt id="in-filename"><b>-in filename</b></dt>
+<dd>
+
+<p>This specifies the input filename to read parameters from or standard input if this option is not specified.</p>
+
+<p>指出输入的如果未指定此选项，则指定从或从标准输入读取参数的输入文件名。</p>
+
+</dd>
+<dt id="out-filename"><b>-out filename</b></dt>
+<dd>
+
+<p>This specifies the output filename parameters to. Standard output is used if this option is not present. The output filename should <b>not</b> be the same as the input filename.</p>
+
+<p>指定输出文件名参数。 如果此选项不存在，则使用标准输出。 输出文件名不能与输入文件名相同</p>
+
+</dd>
+<dt id="noout"><b>-noout</b></dt>
+<dd>
+
+<p>This option inhibits the output of the encoded version of the parameters.</p>
+
+<p>不打印参数编码的版本信息。</p>
+
+</dd>
+<dt id="text"><b>-text</b></dt>
+<dd>
+
+<p>This option prints out the EC parameters in human readable form.</p>
+
+<p>打印椭圆曲线密钥参数信息值。</p>
+
+</dd>
+<dt id="C"><b>-C</b></dt>
+<dd>
+
+<p>This option converts the EC parameters into C code. The parameters can then be loaded by calling the get_ec_group_XXX() function.</p>
+
+<p>用C语言打印椭圆曲线参数。然后可以通过调用get_ec_group_XXX函数来加载参数。</p>
+
+</dd>
+<dt id="check"><b>-check</b></dt>
+<dd>
+
+<p>Validate the elliptic curve parameters.</p>
+
+<p>验证椭圆曲线密钥参数。</p>
+
+</dd>
+<dt id="name-arg"><b>-name arg</b></dt>
+<dd>
+
+<p>Use the EC parameters with the specified &#39;short&#39; name. Use <b>-list_curves</b> to get a list of all currently implemented EC parameters.</p>
+
+<p>使用EC参数的指定短名称。使用-list_curves来得到所有当前实现的EC参数的列表。</p>
+
+</dd>
+<dt id="list_curves"><b>-list_curves</b></dt>
+<dd>
+
+<p>If this options is specified <b>ecparam</b> will print out a list of all currently implemented EC parameters names and exit.</p>
+
+<p>打印所有可用的短名称。</p>
+
+</dd>
+<dt id="conv_form"><b>-conv_form</b></dt>
+<dd>
+
+<p>This specifies how the points on the elliptic curve are converted into octet strings. Possible values are: <b>compressed</b> (the default value), <b>uncompressed</b> and <b>hybrid</b>. For more information regarding the point conversion forms please read the X9.62 standard. <b>Note</b> Due to patent issues the <b>compressed</b> option is disabled by default for binary curves and can be enabled by defining the preprocessor macro <b>OPENSSL_EC_BIN_PT_COMP</b> at compile time.</p>
+
+<p>这指定椭圆曲线上的点如何转换为八位字节串。 可能的值有：压缩（默认值），未压缩和混合。 有关点转换表单的更多信息，请阅读X9.62标准。 注意由于专利问题，压缩选项默认情况下禁用二进制曲线，并且可以通过在编译时定义预处理器宏OPENSSL_EC_BIN_PT_COMP来启用。</p>
+
+</dd>
+<dt id="param_enc-arg"><b>-param_enc arg</b></dt>
+<dd>
+
+<p>This specifies how the elliptic curve parameters are encoded. Possible value are: <b>named_curve</b>, i.e. the ec parameters are specified by an OID, or <b>explicit</b> where the ec parameters are explicitly given (see RFC 3279 for the definition of the EC parameters structures). The default value is <b>named_curve</b>. <b>Note</b> the <b>implicitlyCA</b> alternative, as specified in RFC 3279, is currently not implemented in GmSSL.</p>
+
+<p>这指定椭圆曲线参数的编码方式。 可能的值为：named_curve，即ec参数由OID指定，或显式指定ec参数（参见RFC 3279以了解EC参数结构的定义）。 默认值为named_curve。 注意，如RFC 3279所述，implicitlyCA替代方案目前尚未在GmSSL中实现</p>
+
+</dd>
+<dt id="no_seed"><b>-no_seed</b></dt>
+<dd>
+
+<p>This option inhibits that the &#39;seed&#39; for the parameter generation is included in the ECParameters structure (see RFC 3279).</p>
+
+<p>该选项禁止参数生成“seed”包含在ECParameters结构中（参见RFC 3279）。</p>
+
+</dd>
+<dt id="genkey"><b>-genkey</b></dt>
+<dd>
+
+<p>This option will generate an EC private key using the specified parameters.</p>
+
+<p>该指令会生成一个指定参数的EC私钥。</p>
+
+</dd>
+<dt id="rand-file-s"><b>-rand file(s)</b></dt>
+<dd>
+
+<p>a file or files containing random data used to seed the random number generator, or an EGD socket (see <a href="../man3/RAND_egd.html">RAND_egd(3)</a>). Multiple files can be specified separated by an OS-dependent character. The separator is <b>;</b> for MS-Windows, <b>,</b> for OpenVMS, and <b>:</b> for all others.</p>
+
+<p>含有随机数产生种子的文件。</p>
+
+</dd>
+<dt id="engine-id"><b>-engine id</b></dt>
+<dd>
+
+<p>specifying an engine (by its unique <b>id</b> string) will cause <b>ecparam</b> to attempt to obtain a functional reference to the specified engine, thus initialising it if needed. The engine will then be set as the default for all available algorithms.</p>
+
+<p>指定硬件引擎。该引擎会被设为所有可行的算法的默认引擎。</p>
+
+</dd>
+</dl>
+
+<h1 id="NOTES">NOTES</h1>
+
+<p>PEM format EC parameters use the header and footer lines:</p>
+
+<pre><code> -----BEGIN EC PARAMETERS-----
+ -----END EC PARAMETERS-----</code></pre>
+
+<p>GmSSL is currently not able to generate new groups and therefore <b>ecparam</b> can only create EC parameters from known (named) curves.</p>
+
+<h1 id="EXAMPLES">EXAMPLES</h1>
+
+<p>To create EC parameters with the group &#39;prime192v1&#39;:</p>
+
+<pre><code>  gmssl ecparam -out ec_param.pem -name prime192v1</code></pre>
+
+<p>To create EC parameters with explicit parameters:</p>
+
+<pre><code>  gmssl ecparam -out ec_param.pem -name prime192v1 -param_enc explicit</code></pre>
+
+<p>To validate given EC parameters:</p>
+
+<pre><code>  gmssl ecparam -in ec_param.pem -check</code></pre>
+
+<p>To create EC parameters and a private key:</p>
+
+<pre><code>  gmssl ecparam -out ec_key.pem -name prime192v1 -genkey</code></pre>
+
+<p>To change the point encoding to &#39;compressed&#39;:</p>
+
+<pre><code>  gmssl ecparam -in ec_in.pem -out ec_out.pem -conv_form compressed</code></pre>
+
+<p>To print out the EC parameters to standard output:</p>
+
+<pre><code>  gmssl ecparam -in ec_param.pem -noout -text</code></pre>
+
+<h1 id="SEE-ALSO">SEE ALSO</h1>
+
+<p><a href="../man1/ec">ec(1)</a>, <a href="../man1/dsaparam.html">dsaparam(1)</a></p>
+
+<h1 id="COPYRIGHT">COPYRIGHT</h1>
+
+<p>Copyright 2003-2016 The OpenSSL Project Authors. All Rights Reserved.</p>
+
+<p>Licensed under the GmSSL license (the &quot;License&quot;). You may not use this file except in compliance with the License. You can obtain a copy in the file LICENSE in the source distribution or at <a href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</a>.</p>
+
+
+</body>
+
+</html>
+
+

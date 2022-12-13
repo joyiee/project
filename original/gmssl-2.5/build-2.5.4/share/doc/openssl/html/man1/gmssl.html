@@ -1,0 +1,716 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>gmssl</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:root@localhost" />
+</head>
+
+<body>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#COMMAND-SUMMARY">COMMAND SUMMARY</a>
+    <ul>
+      <li><a href="#Standard-Commands">Standard Commands</a></li>
+      <li><a href="#Message-Digest-Commands">Message Digest Commands</a></li>
+      <li><a href="#Encoding-and-Cipher-Commands">Encoding and Cipher Commands</a></li>
+    </ul>
+  </li>
+  <li><a href="#OPTIONS">OPTIONS</a>
+    <ul>
+      <li><a href="#Common-Options">Common Options</a></li>
+      <li><a href="#Pass-Phrase-Options">Pass Phrase Options</a></li>
+    </ul>
+  </li>
+  <li><a href="#SEE-ALSO">SEE ALSO</a></li>
+  <li><a href="#HISTORY">HISTORY</a></li>
+  <li><a href="#COPYRIGHT">COPYRIGHT</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>gmssl - GmSSL command line tool</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<p><b>gmssl</b> <i>command</i> [ <i>command_opts</i> ] [ <i>command_args</i> ]</p>
+
+<p><b>gmssl</b> <b>list</b> [ <b>standard-commands</b> | <b>digest-commands</b> | <b>cipher-commands</b> | <b>cipher-algorithms</b> | <b>digest-algorithms</b> | <b>public-key-algorithms</b>]</p>
+
+<p><b>gmssl</b> <b>no-</b><i>XXX</i> [ <i>arbitrary options</i> ]</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>GmSSL is a cryptography toolkit implementing the Secure Sockets Layer (SSL v2/v3) and Transport Layer Security (TLS v1) network protocols and related cryptography standards required by them.</p>
+
+<p>The <b>gmssl</b> program is a command line tool for using the various cryptography functions of GmSSL&#39;s <b>crypto</b> library from the shell. It can be used for</p>
+
+<p>GmSSL是实现安全套接字层（SSL v2 / v3）和传输层安全（TLS v1）网络协议 及其所需的相关加密标准的加密工具包。</p>
+
+<pre><code> o  Creation and management of private keys, public keys and parameters
+ o  Public key cryptographic operations
+ o  Creation of X.509 certificates, CSRs and CRLs
+ o  Calculation of Message Digests
+ o  Encryption and Decryption with Ciphers
+ o  SSL/TLS Client and Server Tests
+ o  Handling of S/MIME signed or encrypted mail
+ o  Time Stamp requests, generation and verification</code></pre>
+
+<p>创建并管理公钥，私钥和参数。</p>
+
+<p>公钥加密操作。</p>
+
+<p>x509，CSR和CRL的创建</p>
+
+<p>计算消息摘要。</p>
+
+<p>密码加密解密</p>
+
+<p>SSC/TLS客户端服务器的测试</p>
+
+<p>处理S / MIME签名或加密的邮件</p>
+
+<p>时间戳请求，生成和验证</p>
+
+<h1 id="COMMAND-SUMMARY">COMMAND SUMMARY</h1>
+
+<p>The <b>gmssl</b> program provides a rich variety of commands (<i>command</i> in the SYNOPSIS above), each of which often has a wealth of options and arguments (<i>command_opts</i> and <i>command_args</i> in the SYNOPSIS).</p>
+
+<p>The list parameters <b>standard-commands</b>, <b>digest-commands</b>, and <b>cipher-commands</b> output a list (one entry per line) of the names of all standard commands, message digest commands, or cipher commands, respectively, that are available in the present <b>gmssl</b> utility.</p>
+
+<p>The list parameters <b>cipher-algorithms</b> and <b>digest-algorithms</b> list all cipher and message digest names, one entry per line. Aliases are listed as:</p>
+
+<pre><code> from =&gt; to</code></pre>
+
+<p>The list parameter <b>public-key-algorithms</b> lists all supported public key algorithms.</p>
+
+<p>The command <b>no-</b><i>XXX</i> tests whether a command of the specified name is available. If no command named <i>XXX</i> exists, it returns 0 (success) and prints <b>no-</b><i>XXX</i>; otherwise it returns 1 and prints <i>XXX</i>. In both cases, the output goes to <b>stdout</b> and nothing is printed to <b>stderr</b>. Additional command line arguments are always ignored. Since for each cipher there is a command of the same name, this provides an easy way for shell scripts to test for the availability of ciphers in the <b>gmssl</b> program. (<b>no-</b><i>XXX</i> is not able to detect pseudo-commands such as <b>quit</b>, <b>list</b>, or <b>no-</b><i>XXX</i> itself.)</p>
+
+<p>gmssl程序提供丰富多样的命令（上面的概要中的命令），每个命令通常具有 丰富的选项和参数（概要中的command_opts和command_args）。</p>
+
+<p>列表参数standard-commands，digest-commands和cipher-commands分别输出 目前gmssl实用程序中可用的所有标准命令，消息摘要命令或密码命令的列表 （每行一个条目）。</p>
+
+<p>列表参数密码算法和摘要算法列出所有密码和消息摘要名称，每行一个条目。</p>
+
+<p>列表参数public-key-algorithms列出了所有支持的公钥算法。</p>
+
+<p>命令no-XXX测试指定名称的命令是否可用。 如果没有命名为XXX的命令， 则返回0（成功），并打印no-XXX; 否则返回1并打印XXX。 在这两种情况下， 输出到stdout，没有什么打印到stderr。 其他命令行参数始终被忽略。 因为每个密码都有一个相同名称的命令，这为shell脚本提供了一个简 单的方法来测试gmssl程序中密码的可用性。 （否 - XXX无法检测到伪命令 ，如quit，list或no-XXX本身。）</p>
+
+<h2 id="Standard-Commands">Standard Commands</h2>
+
+<dl>
+
+<dt id="asn1parse"><a href="../man1/asn1parse.html"><b>asn1parse</b></a></dt>
+<dd>
+
+<p>Parse an ASN.1 sequence.</p>
+
+<p>解析ASN1序列</p>
+
+</dd>
+<dt id="ca"><a href="../man1/ca.html"><b>ca</b></a></dt>
+<dd>
+
+<p>Certificate Authority (CA) Management.</p>
+
+<p>CA管理</p>
+
+</dd>
+<dt id="ciphers"><a href="../man1/ciphers.html"><b>ciphers</b></a></dt>
+<dd>
+
+<p>Cipher Suite Description Determination.</p>
+
+<p>密码套件描述确定。</p>
+
+</dd>
+<dt id="cms"><a href="../man1/cms.html"><b>cms</b></a></dt>
+<dd>
+
+<p>CMS (Cryptographic Message Syntax) utility</p>
+
+<p>CMS有效。</p>
+
+</dd>
+<dt id="crl"><a href="../man1/crl.html"><b>crl</b></a></dt>
+<dd>
+
+<p>Certificate Revocation List (CRL) Management.</p>
+
+<p>CRL管理</p>
+
+</dd>
+<dt id="crl2pkcs7"><a href="../man1/crl2pkcs7.html"><b>crl2pkcs7</b></a></dt>
+<dd>
+
+<p>CRL to PKCS#7 Conversion.</p>
+
+<p>CRL转变为PKCS#7</p>
+
+</dd>
+<dt id="dgst"><a href="../man1/dgst.html"><b>dgst</b></a></dt>
+<dd>
+
+<p>Message Digest Calculation.</p>
+
+<p>消息摘要计算</p>
+
+</dd>
+<dt id="dh"><b>dh</b></dt>
+<dd>
+
+<p>Diffie-Hellman Parameter Management. Obsoleted by <a href="../man1/dhparam.html"><b>dhparam</b></a>.</p>
+
+<p>DH参数管理</p>
+
+</dd>
+<dt id="dhparam"><a href="../man1/dhparam.html"><b>dhparam</b></a></dt>
+<dd>
+
+<p>Generation and Management of Diffie-Hellman Parameters. Superseded by <a href="../man1/genpkey"><b>genpkey</b></a> and <a href="../man1/pkeyparam.html"><b>pkeyparam</b></a></p>
+
+<p>Diffie-Hellman参数的生成与管理。 被genpkey和pkeyparam取代</p>
+
+</dd>
+<dt id="dsa"><a href="../man1/dsa.html"><b>dsa</b></a></dt>
+<dd>
+
+<p>DSA Data Management.</p>
+
+<p>DSA数据管理</p>
+
+</dd>
+<dt id="dsaparam"><a href="../man1/dsaparam.html"><b>dsaparam</b></a></dt>
+<dd>
+
+<p>DSA Parameter Generation and Management. Superseded by <a href="../man1/genpkey"><b>genpkey</b></a> and <a href="../man1/pkeyparam.html"><b>pkeyparam</b></a></p>
+
+<p>DSA参数的生成与管理</p>
+
+</dd>
+<dt id="ec"><a href="../man1/ec.html"><b>ec</b></a></dt>
+<dd>
+
+<p>EC/SM2 (Elliptic curve) key processing</p>
+
+<p>EC/SM2密钥处理</p>
+
+</dd>
+<dt id="ecparam"><a href="../man1/ecparam.html"><b>ecparam</b></a></dt>
+<dd>
+
+<p>EC/SM2 parameter manipulation and generation</p>
+
+<p>EC / SM2参数的操作和生成</p>
+
+</dd>
+<dt id="enc"><a href="../man1/enc.html"><b>enc</b></a></dt>
+<dd>
+
+<p>Encoding with Ciphers.</p>
+
+<p>密码进行编码</p>
+
+</dd>
+<dt id="engine"><a href="../man1/engine.html"><b>engine</b></a></dt>
+<dd>
+
+<p>Engine (loadable module) information and manipulation.</p>
+
+<p>引擎信息和操作</p>
+
+</dd>
+<dt id="errstr"><a href="../man1/errstr.html"><b>errstr</b></a></dt>
+<dd>
+
+<p>Error Number to Error String Conversion.</p>
+
+<p>错误字符串转换的错误编号</p>
+
+</dd>
+<dt id="gendh"><b>gendh</b></dt>
+<dd>
+
+<p>Generation of Diffie-Hellman Parameters. Obsoleted by <a href="../man1/dhparam.html"><b>dhparam</b></a>.</p>
+
+<p>生成Diffie-Hellman参数。 被dhparam淘汰。</p>
+
+</dd>
+<dt id="gendsa"><a href="../man1/gendsa.html"><b>gendsa</b></a></dt>
+<dd>
+
+<p>Generation of DSA Private Key from Parameters. Superseded by <a href="../man1/genpkey"><b>genpkey</b></a> and <a href="../man1/pkey.html"><b>pkey</b></a></p>
+
+<p>生成从参数的DSA私钥，被genpkey pkey淘汰</p>
+
+</dd>
+<dt id="genpkey"><a href="../man1/genpkey.html"><b>genpkey</b></a></dt>
+<dd>
+
+<p>Generation of Private Key or Parameters.</p>
+
+<p>私钥和参数的生成</p>
+
+</dd>
+<dt id="genrsa"><a href="../man1/genrsa.html"><b>genrsa</b></a></dt>
+<dd>
+
+<p>Generation of RSA Private Key. Superseded by <a href="../man1/genpkey.html"><b>genpkey</b></a>.</p>
+
+<p>RSA私钥的生成</p>
+
+</dd>
+<dt id="nseq"><a href="../man1/nseq.html"><b>nseq</b></a></dt>
+<dd>
+
+<p>Create or examine a Netscape certificate sequence</p>
+
+<p>创建或检查Netscape证书序列</p>
+
+</dd>
+<dt id="ocsp"><a href="../man1/ocsp.html"><b>ocsp</b></a></dt>
+<dd>
+
+<p>Online Certificate Status Protocol utility.</p>
+
+<p>在线证书状态协议实用程序。</p>
+
+</dd>
+<dt id="passwd"><a href="../man1/passwd.html"><b>passwd</b></a></dt>
+<dd>
+
+<p>Generation of hashed passwords.</p>
+
+<p>哈希密码生成</p>
+
+</dd>
+<dt id="pkcs12"><a href="../man1/pkcs12.html"><b>pkcs12</b></a></dt>
+<dd>
+
+<p>PKCS#12 Data Management.</p>
+
+<p>PKCS#12 数据管理</p>
+
+</dd>
+<dt id="pkcs7"><a href="../man1/pkcs7.html"><b>pkcs7</b></a></dt>
+<dd>
+
+<p>PKCS#7 Data Management.</p>
+
+<p>PKCS#7 数据管理</p>
+
+</dd>
+<dt id="pkey"><a href="../man1/pkey.html"><b>pkey</b></a></dt>
+<dd>
+
+<p>Public and private key management.</p>
+
+<p>公私钥管理</p>
+
+</dd>
+<dt id="pkeyparam"><a href="../man1/pkeyparam.html"><b>pkeyparam</b></a></dt>
+<dd>
+
+<p>Public key algorithm parameter management.</p>
+
+<p>公钥算法参数管理</p>
+
+</dd>
+<dt id="pkeyutl"><a href="../man1/pkeyutl.html"><b>pkeyutl</b></a></dt>
+<dd>
+
+<p>Public key algorithm cryptographic operation utility.</p>
+
+<p>公钥算法加密运算实用程序。</p>
+
+</dd>
+<dt id="rand"><a href="../man1/rand.html"><b>rand</b></a></dt>
+<dd>
+
+<p>Generate pseudo-random bytes.</p>
+
+<p>生成伪随机字节</p>
+
+</dd>
+<dt id="req"><a href="../man1/req.html"><b>req</b></a></dt>
+<dd>
+
+<p>PKCS#10 X.509 Certificate Signing Request (CSR) Management.</p>
+
+<p>PKCS#10 X509 CSR管理</p>
+
+</dd>
+<dt id="rsa"><a href="../man1/rsa.html"><b>rsa</b></a></dt>
+<dd>
+
+<p>RSA key management.</p>
+
+<p>RSA密钥管理</p>
+
+</dd>
+<dt id="rsautl"><a href="../man1/rsautl.html"><b>rsautl</b></a></dt>
+<dd>
+
+<p>RSA utility for signing, verification, encryption, and decryption. Superseded by <a href="../man1/pkeyutl.html"><b>pkeyutl</b></a></p>
+
+<p>用于签名，验证，加密和解密的RSA实用程序。 取而代之的是pkeyutl</p>
+
+</dd>
+<dt id="s_client"><a href="../man1/s_client.html"><b>s_client</b></a></dt>
+<dd>
+
+<p>This implements a generic SSL/TLS client which can establish a transparent connection to a remote server speaking SSL/TLS. It&#39;s intended for testing purposes only and provides only rudimentary interface functionality but internally uses mostly all functionality of the GmSSL <b>ssl</b> library.</p>
+
+<p>这实现了通用的SSL / TLS客户端，可以建立与远程服务器的SSL / TLS的透明连接。 它仅用于测试目的，仅提供基本的接口功能，但内部主要使用GmSSL ssl库的所有功能。</p>
+
+</dd>
+<dt id="s_server"><a href="../man1/s_server.html"><b>s_server</b></a></dt>
+<dd>
+
+<p>This implements a generic SSL/TLS server which accepts connections from remote clients speaking SSL/TLS. It&#39;s intended for testing purposes only and provides only rudimentary interface functionality but internally uses mostly all functionality of the GmSSL <b>ssl</b> library. It provides both an own command line oriented protocol for testing SSL functions and a simple HTTP response facility to emulate an SSL/TLS-aware webserver.</p>
+
+<p>这实现了一个通用的SSL / TLS服务器，它接受来自远程客户端的SSL / TLS连接。 它仅用于测试目的，仅提供基本的接口功能，但内部主要使用GmSSL ssl库的所有功能。 它提供了一个用于测试SSL功能的自己的面向命令行的协议和一个简单的HTTP响应工具来模拟一个支持SSL / TLS的Web服务器。</p>
+
+</dd>
+<dt id="s_time"><a href="../man1/s_time.html"><b>s_time</b></a></dt>
+<dd>
+
+<p>SSL Connection Timer.</p>
+
+<p>SSL连接计时器</p>
+
+</dd>
+<dt id="sess_id"><a href="../man1/sess_id.html"><b>sess_id</b></a></dt>
+<dd>
+
+<p>SSL Session Data Management.</p>
+
+<p>SSL会议数据管理。</p>
+
+</dd>
+<dt id="smime"><a href="../man1/smime.html"><b>smime</b></a></dt>
+<dd>
+
+<p>S/MIME mail processing.</p>
+
+<p>S/MIME 邮件处理</p>
+
+</dd>
+<dt id="speed"><a href="../man1/speed.html"><b>speed</b></a></dt>
+<dd>
+
+<p>Algorithm Speed Measurement.</p>
+
+<p>算法速度测量</p>
+
+</dd>
+<dt id="spkac"><a href="../man1/spkac.html"><b>spkac</b></a></dt>
+<dd>
+
+<p>SPKAC printing and generating utility</p>
+
+<p>SPKAC打印和生成实用程序。</p>
+
+</dd>
+<dt id="ts"><a href="../man1/ts.html"><b>ts</b></a></dt>
+<dd>
+
+<p>Time Stamping Authority tool (client/server)</p>
+
+<p>时间戳机构工具（客户端/服务器）</p>
+
+</dd>
+<dt id="verify"><a href="../man1/verify.html"><b>verify</b></a></dt>
+<dd>
+
+<p>X.509 Certificate Verification.</p>
+
+<p>X.509证书验证</p>
+
+</dd>
+<dt id="version"><a href="../man1/version.html"><b>version</b></a></dt>
+<dd>
+
+<p>GmSSL Version Information.</p>
+
+<p>GmSSL 版本信息</p>
+
+</dd>
+<dt id="x509"><a href="../man1/x509.html"><b>x509</b></a></dt>
+<dd>
+
+<p>X.509 Certificate Data Management.</p>
+
+<p>X.509证书数据管理</p>
+
+</dd>
+</dl>
+
+<h2 id="Message-Digest-Commands">Message Digest Commands</h2>
+
+<dl>
+
+<dt id="sm3"><b>sm3</b></dt>
+<dd>
+
+<p>SM3 Digest</p>
+
+<p>SM3摘要</p>
+
+</dd>
+<dt id="md5"><b>md5</b></dt>
+<dd>
+
+<p>MD5 Digest</p>
+
+<p>MD5摘要</p>
+
+</dd>
+<dt id="mdc2"><b>mdc2</b></dt>
+<dd>
+
+<p>MDC2 Digest</p>
+
+<p>MDC2摘要</p>
+
+</dd>
+<dt id="rmd160"><b>rmd160</b></dt>
+<dd>
+
+<p>RMD-160 Digest</p>
+
+<p>RMD-160摘要</p>
+
+</dd>
+<dt id="sha"><b>sha</b></dt>
+<dd>
+
+<p>SHA Digest</p>
+
+<p>SHA摘要</p>
+
+</dd>
+<dt id="sha1"><b>sha1</b></dt>
+<dd>
+
+<p>SHA-1 Digest</p>
+
+<p>SHA-1摘要</p>
+
+</dd>
+<dt id="sha224"><b>sha224</b></dt>
+<dd>
+
+<p>SHA-224 Digest</p>
+
+<p>SHA-224摘要</p>
+
+</dd>
+<dt id="sha256"><b>sha256</b></dt>
+<dd>
+
+<p>SHA-256 Digest</p>
+
+<p>SHA-256摘要</p>
+
+</dd>
+<dt id="sha384"><b>sha384</b></dt>
+<dd>
+
+<p>SHA-384 Digest</p>
+
+<p>SHA-384摘要</p>
+
+</dd>
+<dt id="sha512"><b>sha512</b></dt>
+<dd>
+
+<p>SHA-512 Digest</p>
+
+<p>SHA-512摘要</p>
+
+</dd>
+</dl>
+
+<h2 id="Encoding-and-Cipher-Commands">Encoding and Cipher Commands</h2>
+
+<dl>
+
+<dt id="base64"><b>base64</b></dt>
+<dd>
+
+<p>Base64 Encoding</p>
+
+<p>Base64 编码</p>
+
+</dd>
+<dt id="sms4-sms4-cbc-sms4-cfb-sms4-ecb-sms4-ofb"><b>sms4 sms4-cbc sms4-cfb sms4-ecb sms4-ofb</b></dt>
+<dd>
+
+<p>SMS4 Cipher</p>
+
+<p>SMS4密码</p>
+
+</dd>
+<dt id="cast-cast-cbc"><b>cast cast-cbc</b></dt>
+<dd>
+
+<p>CAST Cipher</p>
+
+<p>CAST密码</p>
+
+</dd>
+<dt id="cast5-cbc-cast5-cfb-cast5-ecb-cast5-ofb"><b>cast5-cbc cast5-cfb cast5-ecb cast5-ofb</b></dt>
+<dd>
+
+<p>CAST5 Cipher</p>
+
+<p>CAST5密码</p>
+
+</dd>
+<dt id="des-des-cbc-des-cfb-des-ecb-des-ede-des-ede-cbc-des-ede-cfb-des-ede-ofb-des-ofb"><b>des des-cbc des-cfb des-ecb des-ede des-ede-cbc des-ede-cfb des-ede-ofb des-ofb</b></dt>
+<dd>
+
+<p>DES Cipher</p>
+
+<p>DES密码</p>
+
+</dd>
+<dt id="des3-desx-des-ede3-des-ede3-cbc-des-ede3-cfb-des-ede3-ofb"><b>des3 desx des-ede3 des-ede3-cbc des-ede3-cfb des-ede3-ofb</b></dt>
+<dd>
+
+<p>Triple-DES Cipher</p>
+
+<p>三重DES密码</p>
+
+</dd>
+<dt id="idea-idea-cbc-idea-cfb-idea-ecb-idea-ofb"><b>idea idea-cbc idea-cfb idea-ecb idea-ofb</b></dt>
+<dd>
+
+<p>IDEA Cipher</p>
+
+<p>IDEA密码</p>
+
+</dd>
+<dt id="rc2-rc2-cbc-rc2-cfb-rc2-ecb-rc2-ofb"><b>rc2 rc2-cbc rc2-cfb rc2-ecb rc2-ofb</b></dt>
+<dd>
+
+<p>RC2 Cipher</p>
+
+<p>RC2密码</p>
+
+</dd>
+<dt id="rc4"><b>rc4</b></dt>
+<dd>
+
+<p>RC4 Cipher</p>
+
+<p>RC4密码</p>
+
+</dd>
+<dt id="rc5-rc5-cbc-rc5-cfb-rc5-ecb-rc5-ofb"><b>rc5 rc5-cbc rc5-cfb rc5-ecb rc5-ofb</b></dt>
+<dd>
+
+<p>RC5 Cipher</p>
+
+<p>RC5密码</p>
+
+</dd>
+</dl>
+
+<h1 id="OPTIONS">OPTIONS</h1>
+
+<p>Details of which options are available depend on the specific command. This section describes some common options with common behavior.</p>
+
+<p>哪些选项可用的详细信息取决于具体的命令。 本节介绍一些常见的常见选项。</p>
+
+<h2 id="Common-Options">Common Options</h2>
+
+<dl>
+
+<dt id="help"><b>-help</b></dt>
+<dd>
+
+<p>Provides a terse summary of all options.</p>
+
+<p>输出所有选项的摘要</p>
+
+</dd>
+</dl>
+
+<h2 id="Pass-Phrase-Options">Pass Phrase Options</h2>
+
+<p>Several commands accept password arguments, typically using <b>-passin</b> and <b>-passout</b> for input and output passwords respectively. These allow the password to be obtained from a variety of sources. Both of these options take a single argument whose format is described below. If no password argument is given and a password is required then the user is prompted to enter one: this will typically be read from the current terminal with echoing turned off.</p>
+
+<p>几个命令接受密码参数，通常分别使用-passin和-passout来输入和输出密码。 这些允许从各种来源获取密码。 这两个选项都有一个参数，其格式如下所述。 如果没有提供密码参数并且需要密码，则会提示用户输入密码：通常将从当前终端读取，并且回显关闭。</p>
+
+<dl>
+
+<dt id="pass:password"><b>pass:password</b></dt>
+<dd>
+
+<p>the actual password is <b>password</b>. Since the password is visible to utilities (like &#39;ps&#39; under Unix) this form should only be used where security is not important.</p>
+
+<p>实际的密码是password。 由于密码对于实用程序是可见的（例如Unix下的“ps”） ，因此只能在安全性不重要的地方使用此表单。</p>
+
+</dd>
+<dt id="env:var"><b>env:var</b></dt>
+<dd>
+
+<p>obtain the password from the environment variable <b>var</b>. Since the environment of other processes is visible on certain platforms (e.g. ps under certain Unix OSes) this option should be used with caution.</p>
+
+<p>从环境变量var获取密码。 由于其他进程的环境在某些平台上可见（例如某些Unix操作系统下的ps），因此谨慎使用此选项。</p>
+
+</dd>
+<dt id="file:pathname"><b>file:pathname</b></dt>
+<dd>
+
+<p>the first line of <b>pathname</b> is the password. If the same <b>pathname</b> argument is supplied to <b>-passin</b> and <b>-passout</b> arguments then the first line will be used for the input password and the next line for the output password. <b>pathname</b> need not refer to a regular file: it could for example refer to a device or named pipe.</p>
+
+<p>路径名的第一行是密码。 如果相同的pathname参数提供给-passin和-passout参数， 则第一行将用于输入密码，输出密码的下一行将被使用。 路径名不需要引用常规文件： 例如可以参考设备或命名管道。</p>
+
+</dd>
+<dt id="fd:number"><b>fd:number</b></dt>
+<dd>
+
+<p>read the password from the file descriptor <b>number</b>. This can be used to send the data via a pipe for example.</p>
+
+<p>从文件描述符编号读取密码。比方说这可以用于通过管道发送数据。</p>
+
+</dd>
+<dt id="stdin"><b>stdin</b></dt>
+<dd>
+
+<p>read the password from standard input.</p>
+
+<p>从标准输入读取密码。</p>
+
+</dd>
+</dl>
+
+<h1 id="SEE-ALSO">SEE ALSO</h1>
+
+<p><a href="../man1/asn1parse">asn1parse(1)</a>, <a href="../man1/ca">ca(1)</a>, <a href="../man5/config">config(5)</a>, <a href="../man1/crl">crl(1)</a>, <a href="../man1/crl2pkcs7">crl2pkcs7(1)</a>, <a href="../man1/dgst">dgst(1)</a>, <a href="../man1/dhparam">dhparam(1)</a>, <a href="../man1/dsa">dsa(1)</a>, <a href="../man1/dsaparam">dsaparam(1)</a>, <a href="../man1/enc">enc(1)</a>, <a href="../man1/engine">engine(1)</a>, <a href="../man1/gendsa">gendsa(1)</a>, <a href="../man1/genpkey">genpkey(1)</a>, <a href="../man1/genrsa">genrsa(1)</a>, <a href="../man1/nseq">nseq(1)</a>, <a href="../man1/gmssl">gmssl(1)</a>, <a href="../man1/passwd">passwd(1)</a>, <a href="../man1/pkcs12">pkcs12(1)</a>, <a href="../man1/pkcs7">pkcs7(1)</a>, <a href="../man1/pkcs8">pkcs8(1)</a>, <a href="../man1/rand">rand(1)</a>, <a href="../man1/req">req(1)</a>, <a href="../man1/rsa">rsa(1)</a>, <a href="../man1/rsautl">rsautl(1)</a>, <a href="../man1/s_client">s_client(1)</a>, <a href="../man1/s_server">s_server(1)</a>, <a href="../man1/s_time">s_time(1)</a>, <a href="../man1/smime">smime(1)</a>, <a href="../man1/spkac">spkac(1)</a>, <a href="../man1/verify">verify(1)</a>, <a href="../man1/version">version(1)</a>, <a href="../man1/x509">x509(1)</a>, <a href="../man7/crypto">crypto(7)</a>, <a href="../man7/ssl">ssl(7)</a>, <a href="../man5/x509v3_config.html">x509v3_config(5)</a></p>
+
+<h1 id="HISTORY">HISTORY</h1>
+
+<p>The <b>list-</b><i>XXX</i><b>-algorithms</b> pseudo-commands were added in GmSSL 1.0.0; For notes on the availability of other commands, see their individual manual pages.</p>
+
+<h1 id="COPYRIGHT">COPYRIGHT</h1>
+
+<p>Copyright 2000-2016 The OpenSSL Project Authors. All Rights Reserved.</p>
+
+<p>Licensed under the GmSSL license (the &quot;License&quot;). You may not use this file except in compliance with the License. You can obtain a copy in the file LICENSE in the source distribution or at <a href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</a>.</p>
+
+
+</body>
+
+</html>
+
+
